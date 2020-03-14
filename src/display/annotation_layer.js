@@ -448,10 +448,12 @@ class TextWidgetAnnotationElement extends WidgetAnnotationElement {
       //       from parsing the elements correctly for the reference tests.
       if (this.data.multiLine) {
         element = document.createElement("textarea");
+        element.name = this.data.fieldName;
         element.textContent = this.data.fieldValue;
       } else {
         element = document.createElement("input");
         element.type = "text";
+        element.name = this.data.fieldName;
         element.setAttribute("value", this.data.fieldValue);
       }
 
@@ -545,6 +547,7 @@ class CheckboxWidgetAnnotationElement extends WidgetAnnotationElement {
     const element = document.createElement("input");
     element.disabled = this.data.readOnly;
     element.type = "checkbox";
+    element.name = this.data.fieldName;
     if (this.data.fieldValue && this.data.fieldValue !== "Off") {
       element.setAttribute("checked", true);
     }
